@@ -4,7 +4,7 @@ require 'data_mapper'
 require 'haml'
 
 require './models'
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")
+DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")
 
 set :readmill_client_id, "45cb44f6d5c87fb45af92890e174d213"
 set :readmill_client_secret, "ac98685f5ceb4319ab5b0cb9dcb3f5d0"
