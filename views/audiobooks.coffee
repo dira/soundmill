@@ -31,9 +31,6 @@ $ ->
       duration: duration
       progress: progress
 
-    console.log data
-    # $.post '/progress', data
-
-
+    $.post '/progress', data
 
   initialize()
