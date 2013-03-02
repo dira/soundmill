@@ -8,7 +8,10 @@ DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#
 
 set :readmill_client_id, "45cb44f6d5c87fb45af92890e174d213"
 set :readmill_client_secret, "ac98685f5ceb4319ab5b0cb9dcb3f5d0"
-set :callback_url, "http://soundmill.dev/callback"
+
+environment = ENV['RACK_ENV'] || 'development'
+host = environment == 'production' ? 'soundmill.heroku.com' : 'soundmill.dev'
+set :callback_url, "http://#{host}/callback"
 
 enable  :sessions
 
