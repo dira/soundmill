@@ -1,0 +1,5 @@
+- if session[:readmill_user_id]
+  Hello, #{session[:readmill_user_id]}
+- else
+  Hello, please
+  %a{ href: '/auth' } sign in with your Readmill account
