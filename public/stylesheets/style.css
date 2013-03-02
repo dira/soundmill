@@ -1,0 +1,29 @@
+html {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+body {
+  width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  background: white;
+}
+#content {
+  min-height: 200px;
+  padding: 2em;
+}
+#tagline {
+  font-size: 1.2em;
+}
+
+header, footer {
+  background-color: #ecff73;
+  padding: 1em 2em;
+}
+header {
+  margin-bottom: 2em;
+}
+footer {
+  margin-top: 2em;
+}

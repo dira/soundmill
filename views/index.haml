@@ -1,5 +1,8 @@
 - if session[:readmill_user_id]
-  Hello, #{session[:readmill_user_id]}
+  %p Hello, #{session[:readmill_user_id]}.
+  %p
+    You can
+    %a{ href: 'sign-out' } sign out
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account

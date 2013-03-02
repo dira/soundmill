@@ -2,6 +2,22 @@
 %html
   %head
     %title Soundmill - Soundcloud audio books on Readmill
+    %link{ rel: 'stylesheet', href: '/stylesheets/vendor/bootstrap.min.css' }
+    %link{ rel: 'stylesheet', href: '/stylesheets/style.css' }
   %body
-    %h1 Soundmill - read Soundcloud audio books and track them on Readmill
-    #content= yield
+    %header
+      %h1 Soundmill
+      #tagline read Soundcloud audio books and track them on Readmill
+
+    #content
+      = yield
+
+    %footer
+      Developed by
+      %a{href: 'http://twitter.com/amelyun'} Melissa Yung
+      and
+      %a{href: 'http://dira.ro'} Irina Dumitrascu - dira
+
+      at the
+      %a{href: 'http://berlingeekettes.github.com/hackathon/'} Berlin Geekettes hackaton
+      in March 2013.
