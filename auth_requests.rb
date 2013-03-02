@@ -13,7 +13,11 @@ get '/callback' do
     scope:         'non-expiring'
   }
 
-  response = RestClient.post("https://readmill.com/oauth/token.json", token_params)
+  begin
+    response = RestClient.post("https://readmill.com/oauth/token.json", token_params)
+  rescue => e
+    p e
+  end
   token = JSON.parse(response.to_s)
 
   user_hash = readmill_call('get', "/me.json", token['access_token'])

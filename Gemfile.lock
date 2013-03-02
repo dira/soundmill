@@ -84,5 +84,6 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   haml
+  json
   rest-client
   sinatra
