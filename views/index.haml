@@ -1,8 +1,13 @@
-- if session[:readmill_user_id]
-  %p Hello, #{session[:readmill_user_id]}.
+- if user
+  %p Hello, #{user.readmill_fullname}.
   %p
     You can
     %a{ href: 'sign-out' } sign out
+
+
+  - Book.all.each do |book|
+    = book.soundcloud_id
+    = book.readmill_id
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account
