@@ -12,6 +12,22 @@ post '/progress' do
   ping_reading(reading, params[:duration], params[:progress])
 end
 
+post '/highlight' do
+  book = Book.get(params[:book_id])
+  reading = ensure_reading(current_user, book)
+
+  readmill_call('post', "/readings/#{reading.readmill_reading_id}/highlights", current_token, {
+    highlight: {
+      content: params[:comment],
+      locators: {
+        position: params[:position],
+        mid: params[:comment],
+      }
+    }
+  })
+  'ok'
+end
+
 def current_user
   user = nil
   if session[:readmill_user_id]

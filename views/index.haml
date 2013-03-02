@@ -9,10 +9,14 @@
   %ul#books
     - readings = current_user.readings
     - Book.all.each do |book|
-      %li
+      %li{ 'data-book_id' => book.id }
         - reading = readings.detect{|reading| reading.book_id == book.id }
         - position = reading ? reading.position : 0
+
         %iframe.sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no", 'data-position' => position }
+        %form.highlight{ method: 'post', action: "/highlight" }
+          %textarea{ name: 'comment' }
+          %input{ type: 'submit', value: 'Add highlight on the current position'}
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account

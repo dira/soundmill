@@ -2,6 +2,7 @@ require 'sinatra'
 require 'rest_client'
 require 'data_mapper'
 require 'haml'
+require 'coffee_script'
 
 require './models'
 DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")
@@ -25,6 +26,11 @@ end
 def readmill_call(method, path, token, params={})
   url = "https://api.readmill.com/v2#{path}?client_id=#{settings.readmill_client_id}"
   url = "#{url}&access_token=#{token}" if token
-  content = RestClient.send(method, url, params).to_str
-  JSON.parse(content)
+  p method, url, params
+  begin
+    content = RestClient.send(method, url, params).to_str
+    JSON.parse(content)
+  rescue => e
+    p e
+  end
 end
