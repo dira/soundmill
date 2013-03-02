@@ -10,7 +10,7 @@
     - Book.all.each do |book|
 
       %li
-        %iframe#sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no" }
+        %iframe.sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no" }
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account

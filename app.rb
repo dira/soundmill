@@ -48,6 +48,10 @@ get '/sign-out' do
   redirect ''
 end
 
+get '/scripts/audiobooks.js' do
+  coffee :audiobooks
+end
+
 def fetch_and_parse(uri, token)
   url = "#{uri}?client_id=#{settings.readmill_client_id}"
   url = "#{url}&access_token=#{token}" if token
