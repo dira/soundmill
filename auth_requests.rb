@@ -37,12 +37,9 @@ def fetch_and_parse(uri, token)
 end
 
 def ensure_user_record(hash)
-  user = User.first(readmill_id: hash["user"]["id"])
-  if user == nil
+  User.first(readmill_id: hash["user"]["id"]) ||
     user = User.create({
       readmill_id:       hash["user"]["id"],
       readmill_fullname: hash["user"]["fullname"],
     })
-  end
-  user
 end

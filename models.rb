@@ -19,6 +19,7 @@ class Reading
   property :id,       Serial
   belongs_to :user
   belongs_to :book
+  property :readmill_reading_id, Integer
   property :position, Integer
 end
 

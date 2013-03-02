@@ -11,9 +11,8 @@ set :callback_url, "http://soundmill.dev/callback"
 
 enable  :sessions
 
-
-load './requests.rb'
-load './auth_requests.rb'
+require './requests.rb'
+require './auth_requests.rb'
 
 get '/scripts/audiobooks.js' do
   coffee :audiobooks

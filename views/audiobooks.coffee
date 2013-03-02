@@ -28,7 +28,8 @@ $ ->
     progress = Number((duration / sound.duration).toFixed(6))
     data =
       soundcloud_id: sound.id
-      duration: duration
+      position: playEndedAt
+      duration: Math.round(duration/1000)
       progress: progress
 
     $.post '/progress', data
