@@ -16,10 +16,12 @@ get '/callback' do
   response = RestClient.post("https://readmill.com/oauth/token.json", token_params)
   token = JSON.parse(response.to_s)
 
-  user_hash = fetch_and_parse("https://api.readmill.com/v2/me.json", token['access_token'])
+  user_hash = readmill_call('get', "/me.json", token['access_token'])
   user = ensure_user_record(user_hash)
 
   session[:readmill_user_id] = user.readmill_id
+  session[:readmill_user_token] = token['access_token']
+
 
   redirect ''
 end
@@ -27,13 +29,6 @@ end
 get '/sign-out' do
   session[:readmill_user_id] = nil
   redirect ''
-end
-
-def fetch_and_parse(uri, token)
-  url = "#{uri}?client_id=#{settings.readmill_client_id}"
-  url = "#{url}&access_token=#{token}" if token
-  content = RestClient.get(url, :accept => :json).to_str
-  JSON.parse(content) rescue nil
 end
 
 def ensure_user_record(hash)

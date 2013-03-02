@@ -20,18 +20,23 @@ def current_user
   user
 end
 
+def current_token
+  session[:readmill_user_token]
+end
+
 def ensure_reading(user, book)
   hash = {
-    user_id: user.id,
+    user_readmill_id: user.readmill_id,
     book_id: book.id,
   }
   reading = Reading.first(hash)
   return reading if reading != nil
 
-  response = RestClient.post("https://api.readmill.com/v2/books/#{book.readmill_id}/readings", {
-    state: 'reading'
+  reading_response = readmill_call('post', "/books/#{book.readmill_id}/readings", current_token, {
+    reading: {
+      state: 'reading'
+    }
   })
-  reading_response = JSON.parse(response)
 
   hash[:readmill_reading_id] = reading_response["reading"]["id"]
   Reading.create(hash)
@@ -39,9 +44,9 @@ end
 
 
 def ping_reading(reading, duration, progress)
-  response = RestClient.post("https://api.readmill.com/v2/readings/#{reading.readmill_id}/ping", {
+  response = readmill_call('post', "/readings/#{reading.readmill_reading_id}/ping", current_token, {
     ping: {
-      identifier: 1,
+      identifier: '1',
       duration: duration,
       progress: progress,
     }

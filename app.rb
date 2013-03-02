@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'rest_client'
 require 'data_mapper'
+require 'haml'
 
 require './models'
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")
@@ -16,4 +17,11 @@ require './auth_requests.rb'
 
 get '/scripts/audiobooks.js' do
   coffee :audiobooks
+end
+
+def readmill_call(method, path, token, params={})
+  url = "https://api.readmill.com/v2#{path}?client_id=#{settings.readmill_client_id}"
+  url = "#{url}&access_token=#{token}" if token
+  content = RestClient.send(method, url, params).to_str
+  JSON.parse(content)
 end
