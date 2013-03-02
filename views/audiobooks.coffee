@@ -1,14 +1,14 @@
 $ ->
   initialize = ->
     $('.sc-widget').each (index, el) ->
-      widget = SC.Widget(el)
-      initializeWidget(widget)
+      initializeWidget(el)
 
 
-  initializeWidget = (widget) ->
+  initializeWidget = (el) ->
+    widget = SC.Widget(el)
     sound = null
+    position = Number($(el).data('position'))
     widget.bind SC.Widget.Events.READY, ->
-
       widget.getCurrentSound (currentSound) ->
         sound = currentSound
         playStartedAt = null

@@ -3,6 +3,8 @@ class User
 
   property :readmill_id, Integer, key: true
   property :readmill_fullname, String
+
+  has n, :readings
 end
 
 class Book
@@ -11,6 +13,8 @@ class Book
   property :id,                  Serial
   property :soundcloud_id,       Integer
   property :readmill_id,         Integer
+
+  has n, :readings
 end
 
 class Reading
