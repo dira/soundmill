@@ -5,9 +5,12 @@
     %a{ href: 'sign-out' } sign out
 
 
-  - Book.all.each do |book|
-    = book.soundcloud_id
-    = book.readmill_id
+  %h2 Audiobooks
+  %ul#books
+    - Book.all.each do |book|
+
+      %li
+        %iframe#sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no" }
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account
