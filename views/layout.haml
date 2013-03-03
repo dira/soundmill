@@ -7,20 +7,20 @@
   %body
     %header.clearfix
       .soundmill
-        %img{ src: '/logo.png' }
+        %img{ src: '/logo.png'  }
         %h1 Soundmill
         #tagline Read Soundcloud audio books and track them on Readmill
       .user
         - if user
-          %p
-            Hi,
-            #{user.readmill_fullname}!
-            %ol
-              %li
-                %a{ href: 'https://readmill.com/you' } You on Readmill
-              %li
-                %a{ href: 'sign-out' } Sign out
+          %div
+            %a{ href: 'https://readmill.com/you' }
+              %img{ src: "https://api.readmill.com/v2/users/#{user.readmill_id}/avatar?size=medium&client_id=#{settings.readmill_client_id}" }
+            Signed in as
+            %a{ href: 'https://readmill.com/you' }
+              #{user.readmill_fullname}
 
+          %div
+            %a{ href: 'sign-out' } Sign out
     #content= yield
 
     %footer

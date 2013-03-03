@@ -15,11 +15,13 @@
             Readmill
 
         %div.clearfix
+          %h2 Your highlights
           .highlight
-            %h2 Add a new highlight
             %form{ method: 'post', action: "/highlight" }
               %textarea{ name: 'comment' }
-              %input{ type: 'submit', value: 'Add highlight on the current position'}
+              %button{ type: 'submit', value: 'Add highlight on the current position'}
+                Highlight on Readmill
+                %img{ src: '/highlight.png' }
 
           - if reading
             .highlights
