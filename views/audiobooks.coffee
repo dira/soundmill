@@ -53,7 +53,8 @@ class Widget
 
     @widget.bind SC.Widget.Events.PAUSE, =>
       @widget.getPosition (playEndedAt) =>
-        @saveProgress(@playStartedAt, playEndedAt)
+        # @saveProgress(@playStartedAt, playEndedAt)
+        @saveProgress(0, playEndedAt)
 
   saveProgress: (playStartedAt, playEndedAt) ->
     duration = playEndedAt - playStartedAt
@@ -65,6 +66,7 @@ class Widget
       progress: progress
       ping_identifier: @ping_identifier
 
+    console.log 'progress', data, @book_id
     $.post '/progress', data
 
 
@@ -75,6 +77,7 @@ class Widget
         comment: comment
         position: Number((position / @sound.duration).toFixed(6))
 
+      console.log 'highlight', data, @book_id
       $.post '/highlight', data, success
 
 
