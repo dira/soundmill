@@ -9,7 +9,7 @@ post '/progress' do
   reading = ensure_reading(user, book)
   reading.update(position: params[:position])
 
-  ping_reading(reading, params[:duration], params[:progress])
+  ping_reading(reading, params[:duration], params[:progress], params[:ping_identifier])
 end
 
 post '/highlight' do
@@ -59,10 +59,10 @@ def ensure_reading(user, book)
 end
 
 
-def ping_reading(reading, duration, progress)
+def ping_reading(reading, duration, progress, identifier)
   response = readmill_call('post', "/readings/#{reading.readmill_reading_id}/ping", current_token, {
     ping: {
-      identifier: '1',
+      identifier: identifier,
       duration: duration,
       progress: progress,
     }

@@ -6,7 +6,7 @@
 
 
   %h2 Audiobooks
-  %ul#books
+  %ul#books{ 'data-ping_identifier' => Time.now.to_i.to_s }
     - readings = current_user.readings
     - Book.all.each do |book|
       %li{ 'data-book_id' => book.id }

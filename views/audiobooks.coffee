@@ -4,6 +4,7 @@ class Widget
     @sound = null
     @position = options.position
     @book_id = options.book_id
+    @ping_identifier = options.ping_identifier
     @playStartedAt = @position
 
     @widget.bind SC.Widget.Events.READY, @ready
@@ -62,6 +63,7 @@ class Widget
       position: playEndedAt
       duration: Math.round(duration/1000)
       progress: progress
+      ping_identifier: @ping_identifier
 
     $.post '/progress', data
 
@@ -86,6 +88,7 @@ $ ->
       widgets[book_id] = new Widget SC.Widget(el),
         book_id: book_id
         position: position
+        ping_identifier: $('#books').data('ping_identifier')
 
     $('.highlight').submit (e) ->
       e.preventDefault()
