@@ -81,6 +81,11 @@ class Widget
       $.post '/highlight', data, success
 
 
+  playHighlight: (position, word_count) ->
+    start = position * @sound.duration - (word_count * 60/150) * 1000
+    @widget.seekTo(start)
+    @widget.play()
+
 $ ->
   initialize = ->
     widgets = {}
@@ -102,5 +107,13 @@ $ ->
 
       widgets[book_id].sendHighlight comment_field.val(), ->
         comment_field.val('')
+
+    $('.highlights li').click (e) ->
+      e.preventDefault()
+
+      el = $(e.currentTarget)
+      book_id = el.parent().closest('li').data('book_id')
+      widgets[book_id].playHighlight(el.data('position'), el.data('nr_words'))
+
 
   initialize()
