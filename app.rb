@@ -3,6 +3,7 @@ require 'rest_client'
 require 'data_mapper'
 require 'haml'
 require 'coffee_script'
+require 'json'
 
 require './models'
 DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")

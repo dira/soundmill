@@ -5,9 +5,10 @@ html {
 }
 body {
   width: 960px;
-  margin: 0 auto;
+  margin: 8px auto;
   padding: 0;
   background: white;
+  -webkit-border-radius: 8px;
 }
 #content {
   min-height: 200px;
@@ -16,16 +17,32 @@ body {
 #tagline {
   font-size: 1.2em;
 }
+a {
+  color: #B24700;
+}
 
 header, footer {
-  background-color: #ecff73;
+  background-color: #00ced9;
   padding: 1em 2em;
 }
 header {
   margin-bottom: 2em;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
 }
 footer {
   margin-top: 2em;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+}
+
+header .soundmill {
+  width: 650px;
+  float: left;
+}
+header .user {
+  width: 250px;
+  float:right;
 }
 
 #books > li {
@@ -62,5 +79,6 @@ footer {
 
 #books li .highlights li {
   margin-bottom: 10px;
+  cursor: pointer;
   list-style: none;
 }

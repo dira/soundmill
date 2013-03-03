@@ -1,10 +1,4 @@
 - if user
-  %p Hello, #{user.readmill_fullname}.
-  %p
-    You can
-    %a{ href: 'sign-out' } sign out
-
-
   %h2 Audiobooks
   %ul#books{ 'data-ping_identifier' => Time.now.to_i.to_s }
     - readings = current_user.readings
@@ -31,5 +25,5 @@
                     = highlight['highlight']['content']
 
 - else
-  Hello, please
-  %a{ href: '/auth' } sign in with your Readmill account
+  Please
+  %a{ href: '/auth' } sign in with your Readmill account.

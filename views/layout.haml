@@ -5,12 +5,17 @@
     %link{ rel: 'stylesheet', href: '/stylesheets/vendor/bootstrap.min.css' }
     %link{ rel: 'stylesheet', href: '/stylesheets/style.css' }
   %body
-    %header
-      %h1 Soundmill
-      #tagline read Soundcloud audio books and track them on Readmill
+    %header.clearfix
+      .soundmill
+        %h1 Soundmill
+        #tagline Read Soundcloud audio books and track them on Readmill
+      .user
+        - if user
+          %p
+            Signed in as #{user.readmill_fullname}.
+            %a{ href: 'sign-out' } Sign out
 
-    #content
-      = yield
+    #content= yield
 
     %footer
       Developed by
@@ -24,6 +29,5 @@
 
 
     %script{ src: "http://code.jquery.com/jquery-1.9.1.min.js" }
-    -# %script{ src: "http://connect.soundcloud.com/sdk.js" }
     %script{ src: "http://w.soundcloud.com/player/api.js" }
     %script{ src: "/scripts/audiobooks.js" }
