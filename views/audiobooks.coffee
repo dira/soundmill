@@ -56,14 +56,13 @@ class Widget
         # @saveProgress(@playStartedAt, playEndedAt)
         @saveProgress(0, playEndedAt)
 
+
   saveProgress: (playStartedAt, playEndedAt) ->
-    duration = playEndedAt - playStartedAt
-    progress = Number((duration / @sound.duration).toFixed(6))
     data =
       soundcloud_id: @sound.id
       position: playEndedAt
-      duration: Math.round(duration/1000)
-      progress: progress
+      duration: Math.round((playEndedAt - @playStartedAt)/1000)
+      progress: Number((playEndedAt / @sound.duration).toFixed(6))
       ping_identifier: @ping_identifier
 
     console.log 'progress', data, @book_id
