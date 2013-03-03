@@ -75,7 +75,7 @@ class Widget
         comment: comment
         position: Number((position / @sound.duration).toFixed(6))
 
-      $.post '/highlight', data,
+      $.post '/highlight', data, success
 
 
 $ ->

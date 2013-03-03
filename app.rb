@@ -29,8 +29,9 @@ def readmill_call(method, path, token, params={})
   p method, url, params
   begin
     content = RestClient.send(method, url, params).to_str
+    p content
     JSON.parse(content)
   rescue => e
-    p e
+    p 'error', e
   end
 end
