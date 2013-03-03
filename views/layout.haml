@@ -12,8 +12,13 @@
       .user
         - if user
           %p
-            Signed in as #{user.readmill_fullname}.
-            %a{ href: 'sign-out' } Sign out
+            Hi,
+            #{user.readmill_fullname}!
+            %ol
+              %li
+                %a{ href: 'https://readmill.com/you' } You on Readmill
+              %li
+                %a{ href: 'sign-out' } Sign out
 
     #content= yield
 

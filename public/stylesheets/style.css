@@ -43,6 +43,10 @@ header .soundmill {
 header .user {
   width: 250px;
   float:right;
+  text-align: right;
+}
+header .user li {
+  list-style: none;
 }
 
 #books > li {
