@@ -122,12 +122,12 @@ $ ->
           el.after('<div class="highlights"/>')
         widgets[book_id].loadHighlights(true)
 
-    $('.highlights li').click (e) ->
+    $('#books li').on 'click', '.highlights li', (e) ->
       e.preventDefault()
 
       el = $(e.currentTarget)
       book_id = el.parent().closest('li').data('book_id')
-      widgets[book_id].playHighlight(el.data('position'), el.data('nr_words'))
+      widgets[book_id].playHighlight(el.data('position'), el.data('word_count'))
 
 
   initialize()
