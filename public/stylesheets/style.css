@@ -28,10 +28,11 @@ footer {
   margin-top: 2em;
 }
 
-#books li {
+#books > li {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-bottom: 60px;
 }
 
 #books li iframe {
@@ -39,13 +40,27 @@ footer {
   height: 165px;
 }
 #books li .highlight {
+  float: left;
   margin-left: 170px;
   margin-top: 10px;
-  width: 400px;
+  width: 355px;
   text-align: right;
 }
 #books li .highlight textarea {
-  width: 400px;
+  width: 340px;
   height: 80px;
   display: block;
+}
+#books li .highlights {
+  float: right;
+  width: 320px;
+  margin-top: 10px;
+}
+#books li .highlights ol {
+  margin-left: 0;
+}
+
+#books li .highlights li {
+  margin-bottom: 10px;
+  list-style: none;
 }

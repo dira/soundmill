@@ -9,14 +9,27 @@
   %ul#books{ 'data-ping_identifier' => Time.now.to_i.to_s }
     - readings = current_user.readings
     - Book.all.each do |book|
+      - reading = readings.detect{|reading| reading.book_id == book.id }
       %li{ 'data-book_id' => book.id }
-        - reading = readings.detect{|reading| reading.book_id == book.id }
         - position = reading ? reading.position : 0
 
         %iframe.sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no", 'data-position' => position }
-        %form.highlight{ method: 'post', action: "/highlight" }
-          %textarea{ name: 'comment' }
-          %input{ type: 'submit', value: 'Add highlight on the current position'}
+        %div.clearfix
+          .highlight
+            %h2 Add a new highlight
+            %form{ method: 'post', action: "/highlight" }
+              %textarea{ name: 'comment' }
+              %input{ type: 'submit', value: 'Add highlight on the current position'}
+
+          - if reading
+            .highlights
+              %h2 Your highlights
+              %ol
+                - highlights = readmill_call('get', "/readings/#{reading.readmill_reading_id}/highlights", nil)
+                - highlights['items'].each do |highlight|
+                  %li{ 'data-position'=> highlight['highlight']['locators']['position'], 'data-nr_words' => highlight['highlight']['content'].split(/\W+/).count}
+                    = highlight['highlight']['content']
+
 - else
   Hello, please
   %a{ href: '/auth' } sign in with your Readmill account
