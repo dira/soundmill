@@ -1,0 +1,5 @@
+%h2 Your highlights
+%ol
+  - highlights.each do |highlight|
+    %li{ 'data-position'=> highlight[:position], 'data-wordcount' => highlight[:wordcount] }
+      = highlight[:content]

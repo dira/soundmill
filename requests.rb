@@ -28,6 +28,24 @@ post '/highlight' do
   'ok'
 end
 
+get '/highlights' do
+  book = Book.get(params[:book_id])
+  reading = Reading.first({
+    book_id: book.id,
+    user_readmill_id: current_user.readmill_id,
+  })
+  highlights = readmill_call('get', "/readings/#{reading.readmill_reading_id}/highlights", nil)
+  data = highlights['items'].map do |highlight|
+    highlight = highlight['highlight']
+    {
+      position:  highlight['locators']['position'],
+      content:   highlight['content'],
+      wordcount: highlight['content'].split(/\W+/).count,
+    }
+  end
+  haml :highlights, locals: { highlights: data }, layout: false
+end
+
 def current_user
   user = nil
   if session[:readmill_user_id]

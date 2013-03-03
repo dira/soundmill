@@ -8,6 +8,7 @@ class Widget
     @playStartedAt = @position
 
     @widget.bind SC.Widget.Events.READY, @ready
+    @loadHighlights()
 
   ready: =>
     @widget.getCurrentSound @soundReady
@@ -85,6 +86,16 @@ class Widget
     @widget.seekTo(start)
     @widget.play()
 
+
+  loadHighlights: ->
+    el = $("[data-book_id=#{@book_id}] .highlights")
+    return unless el.length > 0
+
+    $.get '/highlights', book_id: @book_id, (data) ->
+      $("[data-book_id=#{@book_id}] .highlights").html(data)
+      el.html(data)
+
+
 $ ->
   initialize = ->
     widgets = {}
@@ -106,6 +117,10 @@ $ ->
 
       widgets[book_id].sendHighlight comment_field.val(), ->
         comment_field.val('')
+        # hackinsh... but it works
+        unless $("[data-book_id=#{book_id}] .highlights").length > 0
+          el.after('<div class="highlights"/>')
+        widgets[book_id].loadHighlights(true)
 
     $('.highlights li').click (e) ->
       e.preventDefault()

@@ -23,12 +23,6 @@
 
           - if reading
             .highlights
-              %h2 Your highlights
-              %ol
-                - highlights = readmill_call('get', "/readings/#{reading.readmill_reading_id}/highlights", nil)
-                - highlights['items'].each do |highlight|
-                  %li{ 'data-position'=> highlight['highlight']['locators']['position'], 'data-nr_words' => highlight['highlight']['content'].split(/\W+/).count}
-                    = highlight['highlight']['content']
 
 - else
   Please
