@@ -25,6 +25,7 @@ class Reading
   belongs_to :book
   property :readmill_reading_id, Integer
   property :position, Integer
+  property :permalink, String
 end
 
 DataMapper.finalize

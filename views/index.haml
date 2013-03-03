@@ -8,6 +8,12 @@
         - position = reading ? reading.position : 0
 
         %iframe.sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no", 'data-position' => position }
+        - if reading
+          %a.on_readmill{ href: reading.permalink }
+            on
+            %img{ src: 'http://readmill.com/favicon.ico' }
+            Readmill
+
         %div.clearfix
           .highlight
             %h2 Add a new highlight

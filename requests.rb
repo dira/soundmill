@@ -7,7 +7,7 @@ post '/progress' do
   user = current_user()
 
   reading = ensure_reading(user, book)
-  reading.update(position: params[:position])
+  reading.update!(position: params[:position].to_i)
 
   ping_reading(reading, params[:duration], params[:progress], params[:ping_identifier])
 end
@@ -55,7 +55,8 @@ def ensure_reading(user, book)
   })
 
   hash[:readmill_reading_id] = reading_response["reading"]["id"]
-  Reading.create(hash)
+  hash[:permalink] = reading_response["reading"]["permalink_url"]
+  Reading.create!(hash)
 end
 
 

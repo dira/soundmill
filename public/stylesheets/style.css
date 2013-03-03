@@ -86,3 +86,11 @@ header .user li {
   cursor: pointer;
   list-style: none;
 }
+
+#books .on_readmill {
+  display: block;
+  text-align: right;
+  margin-right: 8px;
+  margin-top: 2px;
+  color: #58852c;
+}
