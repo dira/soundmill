@@ -5,17 +5,18 @@ require 'haml'
 require 'coffee_script'
 require 'json'
 
+set :readmill_client_id,     ENV['READMILL_CLIENT_ID']
+set :readmill_client_secret, ENV['READMILL_CLIENT_SECRET']
+set :db_url,                 ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#{Dir.pwd}/db/development.db"
+set :environment,            ENV['RACK_ENV'] || 'development'
+set :host,                   settings.environment == 'production' ? 'soundmill.herokuapp.com' : 'soundmill.dev'
+set :callback_url,           "http://#{settings.host}/callback"
+
+enable :sessions
+
 require './models'
-DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_CHARCOAL_URL'] || "sqlite3://#{Dir.pwd}/db/development.db")
+DataMapper.setup(:default, settings.db_url)
 
-set :readmill_client_id, "45cb44f6d5c87fb45af92890e174d213"
-set :readmill_client_secret, "ac98685f5ceb4319ab5b0cb9dcb3f5d0"
-
-environment = ENV['RACK_ENV'] || 'development'
-host = environment == 'production' ? 'soundmill.herokuapp.com' : 'soundmill.dev'
-set :callback_url, "http://#{host}/callback"
-
-enable  :sessions
 
 require './requests.rb'
 require './auth_requests.rb'
