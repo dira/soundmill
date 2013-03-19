@@ -1,0 +1,23 @@
+# [Soundmill](http://soundmill.herokuapp.com/)
+
+Read [Soundcloud](soundcloud.com) audio books and track them on [Readmill](readmill.com)
+
+## The story
+
+Soundmill was born at the [Berlin Geekettes hackaton](http://berlingeekettes.github.com/hackathon/) in March 2013.
+
+During the idea pitch, [Melissa Yung](http://twitter.com/amelyun) talked about her idea of enabling vision-impaired people to track & share their audio-book listening progress and highlights in Readmill.
+
+I joined her offerring my web app dev skills. Realizing we don't have any expertise in making UI for vision-impaired, we soon settled on a more reachable goal: integrating audio books from Soundcloud with the progress tracking & highlighting from Readmill.
+
+24 hours (and a lot of (yum yum yummy) muffins) later, we had Soundmill! 27 hours later we also had a prize, and a new problem: how to split an iPad?
+
+## Status
+
+**It works! :) ** [http://soundmill.herokuapp.com/](http://soundmill.herokuapp.com/)
+
+It allows you to listen to a couple of audio books (carefully hand picked fixtures :D), remembers where you stopeed listening, it tracks your listening sessions in Readmill, and you can see your highlights and replay them.
+
+But it's not maintained.
+
+
