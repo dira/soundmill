@@ -2,7 +2,7 @@ class User
   include DataMapper::Resource
 
   property :readmill_id, Integer, key: true
-  property :readmill_fullname, String
+  property :readmill_fullname, Text
 
   has n, :readings
 end
@@ -25,7 +25,7 @@ class Reading
   belongs_to :book
   property :readmill_reading_id, Integer
   property :position, Integer
-  property :permalink, String
+  property :permalink, Text
 end
 
 DataMapper.finalize
