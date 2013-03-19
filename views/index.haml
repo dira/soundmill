@@ -9,7 +9,7 @@
 
         %iframe.sc-widget{ src: "http://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/#{book.soundcloud_id}", scrolling: "no", frameborder: "no", 'data-position' => position }
         - if reading
-          %a.on_readmill{ href: reading.permalink }
+          %a.on_readmill{ href: reading.permalink, target: '_blank' }
             on
             %img{ src: 'http://readmill.com/favicon.ico' }
             Readmill
