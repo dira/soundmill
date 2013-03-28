@@ -23,7 +23,7 @@ I joined her offerring my web app dev skills. Realizing we don't have any expert
 
 ## Status
 
-**It works! :) ** [http://soundmill.herokuapp.com/](http://soundmill.herokuapp.com/)
+**It works! :)** [http://soundmill.herokuapp.com/](http://soundmill.herokuapp.com/)
 
 It allows you to listen to a couple of audio books (carefully hand picked fixtures :D), remembers where you stopeed listening, it tracks your listening sessions in Readmill, and you can see your highlights and replay them.
 
