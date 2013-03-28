@@ -2,6 +2,15 @@
 
 Read [Soundcloud](soundcloud.com) audio books and track them on [Readmill](readmill.com)
 
+Here's how the app looks like:
+
+[![](http://soundmill.herokuapp.com/screenshots/soundmill.png)](http://soundmill.herokuapp.com)
+
+And here is the result of listening to an audiobook, on Readmill:
+
+[![](http://soundmill.herokuapp.com/screenshots/soundmill on readmill.png)](http://soundmill.herokuapp.com)
+
+
 ## The story
 
 Soundmill was born at the [Berlin Geekettes hackaton](http://berlingeekettes.github.com/hackathon/) in March 2013.
